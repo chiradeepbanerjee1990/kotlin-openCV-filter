@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.TextView
-import com.deep.`kotlin-opencv-filters`.processimage.ProcessImage
 import image.filter.R
 import image.filter.datamodel.Filters
 import image.filter.interfaces.ImageProcessCallback
@@ -33,16 +32,21 @@ class FiltersAdapter(private val filterList:List<Filters>, private val context: 
                 callback.callBack(filterList[position].mfiltersBitmap)
             }
             else if(position==1) {
-                val outPut = ProcessImage.getInstance(context).makeImageBlackAndWhite(filterList[position].mfiltersBitmap)
-                holder.imagebtn.setImageBitmap(outPut)
-                callback.callBack(outPut)
+
+                holder.imagebtn.setImageBitmap(filterList[position].mfiltersBitmap)
+                callback.callBack(filterList[position].mfiltersBitmap)
+
+            }else if(position==2) {
+
+                holder.imagebtn.setImageBitmap(filterList[position].mfiltersBitmap)
+                callback.callBack(filterList[position].mfiltersBitmap)
+
+            }else if(position==3) {
+                holder.imagebtn.setImageBitmap(filterList[position].mfiltersBitmap)
+                callback.callBack(filterList[position].mfiltersBitmap)
 
             }
-            else{
-                val outPut = ProcessImage.getInstance(context).makeImageBlurry(filterList[position].mfiltersBitmap)
-                holder.imagebtn.setImageBitmap(outPut)
-                callback.callBack(outPut)
-            }
+
         })
 
     }
