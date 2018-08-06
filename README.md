@@ -11,3 +11,11 @@ The Library currently provides 3 basic functionality just by passing source bitm
 [1] Conversion of any RGB image to black and white image
 [2] Image Smoothness by Gaussian Blurr technique (Customizable as per user needs)
 [3] openCV provided generic blurr method manipulation (Customizable as per user needs)
+
+Initialize the library by ProcessImage.getInstance(this) 
+
+To initialize openCV library implement * openCVcallback *  interface 
+
+
+
+
