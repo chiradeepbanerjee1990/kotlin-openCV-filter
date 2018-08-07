@@ -23,7 +23,7 @@ class ProcessImage private constructor()    {
         lateinit var opencvcallback:openCVcallback
 
 
-        fun  getInstance(context: Context): ProcessImage {
+        fun getInstance(context: Context): ProcessImage {
             synchronized(this) {
                 if (instance == null) {
                     instance = ProcessImage()
@@ -117,6 +117,17 @@ class ProcessImage private constructor()    {
         sharpBitmap = Bitmap.createBitmap(destMat.cols(),destMat.rows(),Bitmap.Config.ARGB_8888)
         Utils.matToBitmap(destMat,sharpBitmap)
         return sharpBitmap
+    }
+
+    fun makeScaleImage(srcBitmap: Bitmap):Bitmap{
+        val scaledImage:Bitmap
+        val srcMat = Mat()
+        Utils.bitmapToMat(srcBitmap,srcMat)
+        var destMat = Mat()
+        Imgproc.resize(srcMat,destMat,Size((srcBitmap.width*2)*1.00 ,(srcBitmap.height*2)*1.00))
+        scaledImage = Bitmap.createBitmap(destMat.cols(),destMat.rows(),Bitmap.Config.ARGB_8888)
+        Utils.matToBitmap(destMat,scaledImage)
+        return scaledImage
     }
 
 

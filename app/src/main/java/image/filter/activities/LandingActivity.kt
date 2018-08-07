@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
-import android.util.Log
 import android.widget.ImageView
 import com.deep.`kotlin-opencv-filters`.interfaces.openCVcallback
 import com.deep.`kotlin-opencv-filters`.processimage.ProcessImage
@@ -46,7 +45,6 @@ class LandingActivity : AppCompatActivity(),ImageProcessCallback,openCVcallback 
     }
 
     fun openCvInitalized(processImage: ProcessImage){
-        Log.e("Current TAG","Came here")
         iv.setImageDrawable(resources.getDrawable(R.drawable.sample))
         val myBitmapDrawable = iv.drawable as BitmapDrawable
         val toProcessBitmap = myBitmapDrawable.bitmap
@@ -57,12 +55,13 @@ class LandingActivity : AppCompatActivity(),ImageProcessCallback,openCVcallback 
 
 
     fun initializeList(toProcessBitmap: Bitmap){
-        val filterNames = arrayOf("normal","blackandwhite","blurry","Smooth")
-        for (i in 0..3){
+        val filterNames = arrayOf("Normal","BlackandWhite","Blur","Gaussian Blur","Scaled Image")
+        for (i in 0..4){
            when(i){
                 1 -> filterList.add(Filters(filterNames[i],ProcessImage.getInstance(this).makeImageBlackAndWhite(toProcessBitmap)))
                 2-> filterList.add(Filters(filterNames[i],ProcessImage.getInstance(this).makeImageBlurry(toProcessBitmap)))
                 3-> filterList.add(Filters(filterNames[i],ProcessImage.getInstance(this).makeImageSharpGaussian(toProcessBitmap,30.00)))
+                4-> filterList.add(Filters(filterNames[i],toProcessBitmap))
                else ->{
                    filterList.add(Filters(filterNames[i],toProcessBitmap))
                }
