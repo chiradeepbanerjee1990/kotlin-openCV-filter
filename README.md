@@ -36,6 +36,14 @@ The Library is currently in development phase.
 
  ```
  
+ ### Basic Library Method Implementation
+
+ ```kotlin
+  
+    processedBitmap = ProcessImage.getInstance(this).makeImageBlackAndWhite(toProcessBitmap)
+    
+ ```
+ 
 ### Image Channel Intensity Filters
 
 **Another powerful API for this library lets you increase intensity of your image's RGB or HSV value individually as the way you are used with Adobe Lightroom/Adobe Photoshop.**
@@ -59,13 +67,7 @@ SampleApp includes image manipulation using the API. Operations are very fast. T
 ```
 
  
-### Sample Method Implementation
 
- ```kotlin
-  
-    processedBitmap = ProcessImage.getInstance(this).makeImageBlackAndWhite(toProcessBitmap)
-    
- ```
 
 
 
