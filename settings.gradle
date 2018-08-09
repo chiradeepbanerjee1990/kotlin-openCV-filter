@@ -1,2 +1,2 @@
-include ':app', ':kotlin-opencv-filters'
+include ':sampleapp', ':kotlin-opencv-filters'
 include ':openCVLibrary342'
