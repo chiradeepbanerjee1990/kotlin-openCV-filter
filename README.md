@@ -1,6 +1,6 @@
 # Kotlin-openCV-filter
 
-Kotlin-openCV-filter creates operating openCV image manipulation easy and convinient way directly from Kotlin.
+Kotlin openCV filter creates operating image manipulation easy and convinient way directly from Kotlin.
 
 The Library is currently in development phase.
 
