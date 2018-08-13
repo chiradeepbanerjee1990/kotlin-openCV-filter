@@ -4,5 +4,5 @@ import android.graphics.Bitmap
 
 interface ImageProcessCallback {
 
-    fun callBack(destBitmap: Bitmap)
+    fun callBack(destBitmap: Bitmap, isDemo: Boolean)
 }

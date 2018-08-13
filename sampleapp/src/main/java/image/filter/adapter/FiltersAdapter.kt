@@ -31,51 +31,55 @@ class FiltersAdapter(private val filterList:List<Filters>, private val context: 
         holder.imagebtn.setOnClickListener(View.OnClickListener {
             view: View? ->
             if(position==0){
-                callback.callBack(filterList[position].mfiltersBitmap)
+                callback.callBack(filterList[position].mfiltersBitmap,false)
             }
             else if(position==1) {
 
                 holder.imagebtn.setImageBitmap(filterList[position].mfiltersBitmap)
-                callback.callBack(filterList[position].mfiltersBitmap)
+                callback.callBack(filterList[position].mfiltersBitmap,false)
 
             }else if(position==2) {
 
                 holder.imagebtn.setImageBitmap(filterList[position].mfiltersBitmap)
-                callback.callBack(filterList[position].mfiltersBitmap)
+                callback.callBack(filterList[position].mfiltersBitmap,false)
 
             }else if(position==3) {
                 holder.imagebtn.setImageBitmap(filterList[position].mfiltersBitmap)
-                callback.callBack(filterList[position].mfiltersBitmap)
+                callback.callBack(filterList[position].mfiltersBitmap,false)
 
             }else if(position==4) {
                var scaledBitmap:Bitmap = ProcessImage.getInstance(context).makeScaleImage(filterList[position].mfiltersBitmap)
                 holder.imagebtn.setImageBitmap(scaledBitmap)
-                callback.callBack(scaledBitmap)
+                callback.callBack(scaledBitmap,false)
 
             }else if(position==5) {
              val mergedImage:Bitmap = ProcessImage.getInstance(context).changeBlueIntensity(filterList[position].mfiltersBitmap,25)
                 holder.imagebtn.setImageBitmap(mergedImage)
-                callback.callBack(mergedImage)
+                callback.callBack(mergedImage,false)
              }else if(position==6) {
                 val mergedImage:Bitmap = ProcessImage.getInstance(context).changeRedIntensity(filterList[position].mfiltersBitmap,25)
                 holder.imagebtn.setImageBitmap(mergedImage)
-                callback.callBack(mergedImage)
+                callback.callBack(mergedImage,false)
             }else if(position==7) {
                 val mergedImage:Bitmap = ProcessImage.getInstance(context).changeGreenIntensity(filterList[position].mfiltersBitmap,25)
                 holder.imagebtn.setImageBitmap(mergedImage)
-                callback.callBack(mergedImage)
+                callback.callBack(mergedImage,false)
             }else if(position==8) {
                 val mergedImage:Bitmap = ProcessImage.getInstance(context).changeHueIntensity(filterList[position].mfiltersBitmap,25)
                 holder.imagebtn.setImageBitmap(mergedImage)
-                callback.callBack(mergedImage)
+                callback.callBack(mergedImage,false)
             }else if(position==9) {
                 val mergedImage:Bitmap = ProcessImage.getInstance(context).changeSaturationIntensity(filterList[position].mfiltersBitmap,25)
                 holder.imagebtn.setImageBitmap(mergedImage)
-                callback.callBack(mergedImage)
+                callback.callBack(mergedImage,false)
             }else if(position==10) {
                 val mergedImage:Bitmap = ProcessImage.getInstance(context).changeVignettingIntensity(filterList[position].mfiltersBitmap,25)
                 holder.imagebtn.setImageBitmap(mergedImage)
-                callback.callBack(mergedImage)
+                callback.callBack(mergedImage,false)
+            }else if(position==11) {
+                var confg:Bitmap.Config = Bitmap.Config.ARGB_8888
+                var btmap:Bitmap = Bitmap.createBitmap(400,800,confg)
+                callback.callBack(btmap,true)
             }
 
         })

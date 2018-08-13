@@ -1,5 +1,6 @@
 package image.filter.activities
 
+import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.drawable.BitmapDrawable
 import android.os.Bundle
@@ -16,9 +17,12 @@ import image.filter.interfaces.ImageProcessCallback
 
 
 class LandingActivity : AppCompatActivity(),ImageProcessCallback,openCVcallback {
-    override fun callBack(destBitmap: Bitmap) {
-        if(iv!=null){
+    override fun callBack(destBitmap: Bitmap,isDemo:Boolean) {
+        if(iv!=null && !isDemo){
             iv.setImageBitmap(destBitmap)
+        }else{
+            var intent: Intent = Intent(this,ColorChannelsAct::class.java)
+            startActivity(intent)
         }
     }
 
@@ -57,8 +61,8 @@ class LandingActivity : AppCompatActivity(),ImageProcessCallback,openCVcallback 
 
     fun initializeList(toProcessBitmap: Bitmap){
         val filterNames = arrayOf("Normal","BlackandWhite","Blur","Gaussian Blur","Scaled Image","Increase Blue",
-                "Increase Red","Increase Green","Increase Hue","Increase Saturation","Increase Vignetting")
-        for (i in 0..10){
+                "Increase Red","Increase Green","Increase Hue","Increase Saturation","Increase Vignetting","Channel Filter Demo")
+        for (i in 0..11){
            when(i){
                 1 -> filterList.add(Filters(filterNames[i],ProcessImage.getInstance(this).makeImageBlackAndWhite(toProcessBitmap)))
                 2-> filterList.add(Filters(filterNames[i],ProcessImage.getInstance(this).makeImageBlurry(toProcessBitmap)))
@@ -87,6 +91,14 @@ class LandingActivity : AppCompatActivity(),ImageProcessCallback,openCVcallback 
                10-> {
                    filterList.add(Filters(filterNames[i],((resources.getDrawable(R.drawable.red) as BitmapDrawable).bitmap)))
                    iv.setImageDrawable(resources.getDrawable(R.drawable.red))
+               }
+
+               11-> {
+                  var confg:Bitmap.Config = Bitmap.Config.ARGB_8888
+                   var btmap:Bitmap = Bitmap.createBitmap(400,800,confg)
+                   filterList.add(Filters(filterNames[i],btmap))
+                   iv.setImageBitmap(btmap)
+
                }
                else ->{
                    filterList.add(Filters(filterNames[i],toProcessBitmap))
